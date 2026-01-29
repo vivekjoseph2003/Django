@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <h1>Contact Me</h1>
+
+    <p>If you’d like to get in touch, click the button below.</p>
+
+    <button onclick="showMessage()">Contact Me</button>
+
+    <p id="message"></p>
+
+    <p><a href="{% url 'gallery' %}">Back to Gallery</a></p>
+
+    <script src="{% static 'script.js' %}"></script>
+
+</body>
+</html>
