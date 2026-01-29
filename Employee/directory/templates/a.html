@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  {% if my_objects %}
+  {% for obj in my_objects %}
+    <h1>{{ obj.name }}</h1>
+    <p>Title: {{ obj.jobtitle }}</p>
+    <p>Salary: {{ obj.salary }}</p>
+
+   {% if obj.JobTime == 'Full Time' %}
+    <p style="color:green;">Full Time</p>
+    {% else %}
+    <p style="color: red;">Part Time</p>
+    {% endif %}
+    {% endfor %}
+  {% else %}
+  <p>No employees available.</p>
+  {% endif %}
+</body>
+</html>
