@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+{% if my_objects %}
+{% for obj in my_objects %}
+    <h1>Name:{{ obj.name }}</h1>
+    <p>Grade: {{ obj.grade }}</p>
+
+   {% if obj.result == 'Passed' %}
+    <p style="color:green;">Passed</p>
+    {% else %}
+    <p style="color: red;">Failed</p>
+    {% endif %}
+    {% endfor %}
+{% else %}
+<p>No students found.</p>
+{% endif %}
+</body>
+</html>
