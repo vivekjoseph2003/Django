@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+     <h1>Contact Info</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.non_field_errors }}        
+        <label>Full Name:</label><br>
+        {{ form.full_name }}<br>
+        {{ form.full_name.errors }}<br>
+        <label>Email Address:</label><br>
+        {{ form.email }}<br>
+        {{ form.email.errors }}<br>
+        <label>Phone Number:</label><br>
+        {{ form.phone }}<br>
+        {{ form.phone.errors }}<br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
