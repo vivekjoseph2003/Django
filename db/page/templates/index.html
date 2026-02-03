@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+     <h1>Add Movie</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.non_field_errors }}        
+        <label>Movie Name:</label><br>
+        {{ form.name }}<br>
+        {{ form.name.errors }}<br>
+        <label>Release Year:</label><br>
+        {{ form.year }}<br>
+        {{ form.year.errors }}<br>
+        <input type="submit" value="Save Movie">
+    </form>
+</body>
+</html>
