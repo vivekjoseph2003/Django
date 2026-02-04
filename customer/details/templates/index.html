@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1>Customer</h1>
+    <form action="" method="POST">
+        {{ form.non_field_errors }}
+        {% csrf_token %}
+        <label>Name:</label><br>
+        {{ form.name }}<br>
+        <label>Email:</label><br>
+        {{ form.email }}<br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
