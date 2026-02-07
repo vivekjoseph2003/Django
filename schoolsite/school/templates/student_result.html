@@ -1,0 +1,24 @@
+{% extends 'layout/app-layout.html' %}
+
+{% block content %}
+<h2>Result for {{ name }}</h2>
+
+{% if result %}
+<table border="1">
+    <tr>
+        <th>Subject</th>
+        <th>Marks</th>
+    </tr>
+    {% for subject, marks in result.items %}
+    <tr>
+        <td>{{ subject }}</td>
+        <td>{{ marks }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No result found for this student.</p>
+{% endif %}
+
+<a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}

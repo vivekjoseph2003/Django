@@ -1,0 +1,13 @@
+{% extends 'layout/app-layout.html' %}
+
+{% block content %}
+<h2>Students List</h2>
+<ul>
+    {% for student in students %}
+        <li>
+            {{ student }} - 
+            <a href="{% url 'student-result' student %}">View Result</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
