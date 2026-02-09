@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Books</title>
+</head>
+<body>
+    <h1>Library Books</h1>
+
+    <div>
+        <a href="{% url 'book_create' %}">Add Book</a>
+    </div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if page_obj.object_list %}
+                {% for book in page_obj.object_list %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.year }}</td>
+                        <td>
+                            <a href="{% url 'book_update' book.pk %}">Edit</a> |
+                            <a href="{% url 'book_delete' book.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">No books found.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+
+</body>
+</html>
