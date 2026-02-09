@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if student %}Edit{% else %}Add{% endif %} Student</title>
+</head>
+<body>
+<h1>{% if student %}Edit{% else %}Add{% endif %} Student</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label>Name:</label>
+    <input type="text" name="name" value="{{ student.name|default:'' }}" required><br>
+
+    <label>Class:</label>
+    <input type="text" name="student_class" value="{{ student.student_class|default:'' }}" required><br>
+
+    <label>Age:</label>
+    <input type="number" name="age" value="{{ student.age|default:'' }}" required><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<a href="{% url 'student_list' %}">Back</a>
+</body>
+</html>
