@@ -1,18 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Student
 from django.core.paginator import Paginator
-from django.db.models import Q
 
 def student_list(request):
-    query = request.GET.get('q')
-    if query:
-        students = Student.objects.filter(Q(name__icontains=query))
-    else:
-        students = Student.objects.all()
+    students = Student.objects.all()
     paginator = Paginator(students, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'details/list.html', {'page_obj': page_obj, 'query': query})
+    return render(request, 'details/list.html', {'page_obj': page_obj})
 
 def student_create(request):
     if request.method == 'POST':

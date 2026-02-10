@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>{% if student %}Edit{% else %}Add{% endif %} Student</title>
-</head>
 <body>
 <h1>{% if student %}Edit{% else %}Add{% endif %} Student</h1>
-
 <form method="post">
     {% csrf_token %}
     <label>Name:</label>
