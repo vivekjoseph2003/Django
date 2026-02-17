@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if product %}Edit{% else %}Add{% endif %} Product</title>
+</head>
+<body>
+<h1>{% if product %}Edit{% else %}Add{% endif %} Product</h1>
+<form method="POST">
+    {% csrf_token %}
+    Name: <input type="text" name="name" value="{{ product.name|default_if_none:'' }}"><br>
+    Description: <textarea name="description">{{ product.description|default_if_none:'' }}</textarea><br>
+    Price: <input type="number" name="price" value="{{ product.price|default_if_none:'' }}" step="0.01"><br>
+    <button type="submit">{% if product %}Update{% else %}Add{% endif %}</button>
+</form>
+<a href="{% url 'home' %}">Back</a>
+</body>
+</html>

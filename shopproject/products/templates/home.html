@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+<h1>Product List</h1>
+<a href="{% url 'createproduct' %}">Add Product</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    {% for product in products %}
+    <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+            <a href="{% url 'productdetail' product.id %}">View</a>
+            <a href="{% url 'updateproduct' product.id %}">Edit</a>
+            <a href="{% url 'deleteproduct' product.id %}">Delete</a>
+            <a href="{% url 'generate_pdf' product.id %}">PDF</a>
+            <a href="{% url 'send_product_email' product.id %}">Email</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
