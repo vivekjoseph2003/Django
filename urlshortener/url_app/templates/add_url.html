@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Add URL{% endblock %}
+
+{% block content %}
+<h2>Add URL</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add URL</button>
+</form>
+<a href="{% url 'url_list' %}">Back to list</a>
+{% endblock %}

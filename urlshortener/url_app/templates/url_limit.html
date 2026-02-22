@@ -1,0 +1,9 @@
+{% extends "layout/base.html" %}
+
+{% block title %}URL Limit Reached{% endblock %}
+
+{% block content %}
+<h2>URL Limit Reached</h2>
+<p>You can only add up to 5 URLs. Delete an existing URL to add a new one.</p>
+<p><a href="{% url 'url_list' %}">Back to URL list</a></p>
+{% endblock %}

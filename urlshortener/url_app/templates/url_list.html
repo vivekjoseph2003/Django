@@ -1,0 +1,51 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Your URLs{% endblock %}
+
+{% block content %}
+<h2>Your URLs</h2>
+
+<form method="get">
+    <input type="text" name="q" placeholder="Search..." value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+{% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+
+<table border="1">
+<tr>
+    <th>Title</th>
+    <th>Original URL</th>
+    <th>Short URL</th>
+    <th>Created Time</th>
+    <th>Actions</th>
+</tr>
+{% for u in urls %}
+<tr>
+    <td>{{ u.title }}</td>
+    <td>{{ u.url }}</td>
+    <td>{{ u.short_url }}</td>
+    <td>{{ u.created_time }}</td>
+    <td>
+        <a href="{% url 'edit_url' u.id %}">Edit</a> |
+        <a href="{% url 'delete_url' u.id %}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<div style="margin-top: 10px;">
+    {% if urls.has_previous %}
+        <a href="?page=1" class="page-link">&laquo; first</a>
+        <a href="?page={{ urls.previous_page_number }}" class="page-link" aria-label="previous">&laquo; previous</a>
+    {% endif %}
+
+    <span>Page {{ urls.number }} of {{ urls.paginator.num_pages }}</span>
+
+    {% if urls.has_next %}
+        <a href="?page={{ urls.next_page_number }}" class="page-link">next &raquo;</a>
+        <a href="?page={{ urls.paginator.num_pages }}" class="page-link">last &raquo;</a>
+    {% endif %}
+</div>
+
+{% endblock %}
