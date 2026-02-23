@@ -6,4 +6,5 @@ urlpatterns = [
     path('add/', views.add_url, name='add_url'),
     path('edit/<int:id>/', views.edit_url, name='edit_url'),
     path('delete/<int:id>/', views.delete_url, name='delete_url'),
+    path('<str:short_url>/', views.redirect_short_url, name='redirect_short_url'),
 ]

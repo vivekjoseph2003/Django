@@ -17,7 +17,7 @@ def url_list(request):
         urls = URL.objects.filter(username=username)
 
     urls = urls.order_by('-created_time')
-    paginator = Paginator(urls, 5)
+    paginator = Paginator(urls, 1)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -62,4 +62,9 @@ def delete_url(request, id):
     username = request.user.username
     url_del = get_object_or_404(URL, id=id, username=username)
     url_del.delete()
-    return redirect('url_list')
+    return redirect('url_list') 
+
+# shorturl
+def redirect_short_url(request, short_url):
+    url_obj = get_object_or_404(URL, short_url=short_url)
+    return redirect(url_obj.url)
